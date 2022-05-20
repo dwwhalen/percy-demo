@@ -1,7 +1,7 @@
 name: run my vanilla Cypress tests
 on: 
-  push
-  workflow_dispatch
+  push:
+  workflow_dispatch:
 
 jobs:
   checkout-and-test:
