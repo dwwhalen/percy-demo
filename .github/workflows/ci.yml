@@ -1,0 +1,51 @@
+name: run my vanilla Cypress tests
+on: 
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: install and build the application
+        run: |
+          npm install
+          npm run build
+
+      - name: run unit tests
+        run: |
+          npm run test:unit    
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          if-no-files-found: error
+          path: dist
+
+  e2e-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Download the build folders
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: dist
+
+      - name: "UI Tests - Chrome"
+        uses: cypress-io/github-action@v2
+        timeout-minutes: 10
+        with:
+          record: false
+          start: npm run preview
+          wait-on: "http://localhost:3000"
+          browser: chrome
