@@ -10,14 +10,13 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: install and build the application
+      - name: Run linting
         run: |
           npm install
-          npm run build
+          npm run lint:ci
 
-      - name: run unit tests
-        run: |
-          npm run test:unit    
+      - name: Build And Unit Test
+        uses: ./actions/spa-build-test-push
 
       - name: Save build folder
         uses: actions/upload-artifact@v2
