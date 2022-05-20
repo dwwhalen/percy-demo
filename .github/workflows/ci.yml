@@ -15,8 +15,13 @@ jobs:
           npm install
           npm run lint:ci
 
-      - name: Build And Unit Test
-        uses: ./actions/spa-build-test-push
+      - name: build the application
+        run: |
+          npm run build
+
+      - name: run unit tests
+        run: |
+          npm run test:unit    
 
       - name: Save build folder
         uses: actions/upload-artifact@v2
