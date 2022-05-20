@@ -10,9 +10,13 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: install and build the application
+      - name: Run linting
         run: |
           npm install
+          npm run lint:ci
+
+      - name: build the application
+        run: |
           npm run build
 
       - name: run unit tests
