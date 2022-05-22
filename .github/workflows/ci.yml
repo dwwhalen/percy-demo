@@ -1,7 +1,13 @@
-name: run my vanilla Cypress tests
+name: run Cypress tests with Percy
 on: 
   push:
+    branches:
+      - 'main'
+  pull_request:
   workflow_dispatch:
+
+env:
+  PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
 jobs:
   build:
@@ -45,11 +51,16 @@ jobs:
           name: dist
           path: dist
 
-      - name: "UI Tests - Chrome"
-        uses: cypress-io/github-action@v2
-        timeout-minutes: 10
-        with:
-          record: false
-          start: npm run preview
-          wait-on: "http://localhost:3000"
-          browser: chrome
+      # - name: "UI Tests - Chrome"
+      #   uses: cypress-io/github-action@v2
+      #   timeout-minutes: 10
+      #   with:
+      #     record: false
+      #     start: npm run preview
+      #     wait-on: "http://localhost:3000"
+      #     browser: chrome
+
+      - name: "E2E with Percy"
+        run: |
+          npm install
+          npm run test:e2e:percy
