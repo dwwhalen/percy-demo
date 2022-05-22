@@ -1,5 +1,6 @@
 name: run Cypress tests with Percy
 on: 
+  push: main
   pull_request:
   workflow_dispatch:
 
