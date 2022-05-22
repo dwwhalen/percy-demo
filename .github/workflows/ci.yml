@@ -1,6 +1,8 @@
 name: run Cypress tests with Percy
 on: 
-  push: main
+  push:
+    branches:
+      - 'main'
   pull_request:
   workflow_dispatch:
 
