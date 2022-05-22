@@ -1,7 +1,10 @@
 name: run Cypress tests with Percy
 on: 
-  push:
+  pull_request:
   workflow_dispatch:
+
+env:
+  PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
 jobs:
   build:
