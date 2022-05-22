@@ -1,4 +1,4 @@
-name: run my vanilla Cypress tests
+name: run Cypress tests with Percy
 on: 
   push:
   workflow_dispatch:
@@ -56,4 +56,5 @@ jobs:
 
       - name: "E2E with Percy"
         run: |
+          npm install
           npm run test:e2e:percy
