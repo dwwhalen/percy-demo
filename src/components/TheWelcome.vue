@@ -10,7 +10,7 @@ import SupportIcon from "./icons/IconSupport.vue";
 <template>
   <WelcomeItem>
     <template #icon>
-      <DocumentationIcon />
+      <EcosystemIcon />
     </template>
     <template #heading>Documentation</template>
 
@@ -45,7 +45,7 @@ import SupportIcon from "./icons/IconSupport.vue";
 
   <WelcomeItem>
     <template #icon>
-      <EcosystemIcon />
+      <DocumentationIcon />
     </template>
     <template #heading>Ecosystem</template>
 
@@ -64,6 +64,17 @@ import SupportIcon from "./icons/IconSupport.vue";
 
   <WelcomeItem>
     <template #icon>
+      <SupportIcon />
+    </template>
+    <template #heading>Support Vue</template>
+
+    As an independent project, Vue relies on community backing for its
+    sustainability. You can help us by
+    <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a>.
+  </WelcomeItem>
+
+  <WelcomeItem>
+    <template #icon>
       <CommunityIcon />
     </template>
     <template #heading>Community</template>
@@ -78,16 +89,5 @@ import SupportIcon from "./icons/IconSupport.vue";
     follow the official
     <a target="_blank" href="https://twitter.com/vuejs">@vuejs</a>
     twitter account for latest news in the Vue world.
-  </WelcomeItem>
-
-  <WelcomeItem>
-    <template #icon>
-      <SupportIcon />
-    </template>
-    <template #heading>Support Vue</template>
-
-    As an independent project, Vue relies on community backing for its
-    sustainability. You can help us by
-    <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a>.
   </WelcomeItem>
 </template>
