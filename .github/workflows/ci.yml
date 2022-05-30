@@ -8,6 +8,7 @@ on:
 
 env:
   PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+  CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
 jobs:
   build:
